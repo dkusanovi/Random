@@ -50,17 +50,17 @@ def RK4(t0, y0, N, N_perioda):
         Yd = yd[-1]
         T = t[-1]
 
-        k1vx = ydd(Y, Yd, T)
         k1x = Yd
+        k1vx = ydd(Y, Yd, T) # nagib brzine
 
-        k2vx =  ydd(Y + k1vx*dt/2, Yd + k1vx*dt/2, T + dt/2)
         k2x = Yd + k1vx*dt/2
+        k2vx =  ydd(Y + k1x*dt/2, Yd + k1vx*dt/2, T + dt/2)
 
-        k3vx = ydd(Y + k2vx*dt/2, Yd + k2vx*dt/2, T + dt/2)
         k3x = Yd + k2vx*dt/2
+        k3vx = ydd(Y + k2x*dt/2, Yd + k2vx*dt/2, T + dt/2)
 
-        k4vx = ydd(Y + k3vx*dt, Yd + k3vx*dt, T + dt)
         k4x = Yd + k3vx*dt
+        k4vx = ydd(Y + k3x*dt, Yd + k3vx*dt, T + dt)
 
         t.append(T+dt)
         y.append(Y + 1/6*(k1x + 2*k2x + 2*k3x + k4x)*dt)
@@ -71,8 +71,6 @@ def RK4(t0, y0, N, N_perioda):
 # print(RK4(0, 4, 10000, 20)[0])
 # print(RK4(0, 4, 10000, 20)[1])
 # print(RK4(0, 4, 10000, 20)[2])
-
-
 
 
 
@@ -132,9 +130,7 @@ def devetnaesti_period_euler():
     plt.show()
 
 # jedan_period_euler()
-#devetnaesti_period_euler()
-
-
+# devetnaesti_period_euler()
 
 
 
@@ -178,8 +174,6 @@ def devetnaesti_period_RK4():
 
 
 
-
-
 listN = [10000, 20000, 40000, 80000, 160000, 320000, 640000]
 
 def periodi_razN_euler(lista):
@@ -202,9 +196,7 @@ def periodi_razN_RK4(lista):
     plt.show()
 
 # periodi_razN_euler(listN)
-# periodi_razN_RK4(listN)
-
-
+periodi_razN_RK4(listN)
 
 
 
@@ -215,14 +207,12 @@ def N_razMetoda():
     plt.plot(euler(0, 4, 200000, 20)[0],  euler(0, 4, 200000, 20)[3], label='sin y = y')
     plt.plot(euler(0, 4, 200000, 20)[0],  euler(0, 4, 200000, 20)[1], label='Euler')
     plt.plot(RK4(0, 4, 200000, 20)[0],  RK4(0, 4, 200000, 20)[1], label='RK4')
-    ax.set_xlim([19, 20])
+    ax.set_xlim([0, 20])
     # ax.set_ylim([0, 1])
     plt.legend(loc="lower left")
     plt.show()
 
-# N_razMetoda()
-
-
+N_razMetoda()
 
 
 
