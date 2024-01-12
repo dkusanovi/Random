@@ -20,16 +20,10 @@ def JUG(y0, yd0):  # jednoliko ubrzano gibanje
     y = [y0/180*pi]
     h=(tN-t0)/N
 
-    # for i in range(1,N):
-    #     tlist.append(i*h)
-    #     yd.append(yd[i-1] + ydd[i-1]*h)
-    #     y.append(y[i-1] + yd[i-1]*h + 1/2*ydd[i-1]*h**2)
-    #     ydd.append(-(g/l)*math.sin(y[i]))
-
-    for i in range(0,N):
+    for i in range(0, N):
         tlist.append(i*h)
-        yd.append(yd[i] + ydd[i]*h)
         y.append(y[i] + yd[-1]*h + 1/2*ydd[i-1]*h**2)
+        yd.append(yd[i] + ydd[i]*h)
         ydd.append(-(g/l)*math.sin(y[i]))
 
     return tlist, y, yd, ydd
