@@ -251,3 +251,34 @@ periodi_razPU_RK4(kutevi)
 # x[i] = x[i-1] + vx[i-1]*h + 1/2*ax[i-1]*h**2
 # y[i] = y[i-1] + vy[i-1]*h + 1/2*ay[i-1]*h**2
 # z[i] = z[i-1] + vz[i-1]*h + 1/2*az[i-1]*h**2
+
+
+# function je ydd
+# def RK2(t0, x0, v0, function, N, tN):
+#     '''
+#     Prediktor-korektor metoda za numericko rjesavanje obicnih diferencijalnih
+#     jednadzbi prvog reda, Runge-Kutta 2 metoda.
+#     \nt0 --- pocetni trenutak
+#     \nx0 --- pocetni polozaj
+#     \nv0 --- pocetna brzina
+#     \nN  --- broj iteracija
+#     \ntN --- krajnji trenutak
+#     '''
+#     h = (tN-t0)/N #vremenski korak
+#     T = [t0] #pocetni trenutak
+#     X = [x0] #pocetni polozaj
+#     V = [v0] #pocetna brzina
+#     A = [function(t0, x0, v0)] #pocetna akceleracija
+#     while T[-1] <= tN:
+#         t = T[-1]
+#         x = X[-1]
+#         v = V[-1]
+#         k1v = function(t, x, v)
+#         k1x = v
+#         k2v = function(t+h, x+h*k1x, v+h*k1v)
+#         k2x = v+h*k1v
+#         T.append(T[-1]+h)
+#         X.append(x+(k1x+k2x)*h/2)
+#         V.append(v+(k1v+k2v)*h/2)
+#         A.append(function(T[-1], X[-1], V[-1]))
+#     return T, X, V, A
